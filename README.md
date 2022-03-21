@@ -95,8 +95,7 @@ x-envoy-upstream-service-time: 15
 * Connection #0 to host onprem.example.com left intact
 ```
 
-
-# X. 404 Error
+# 4-1. 404 Error
 ```
 * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
 * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
@@ -112,3 +111,30 @@ x-envoy-upstream-service-time: 15
 If you find 404 error, then you might use the same TLS certificate. Configuring more than one gateway using the same TLS certificate will cause browsers that leverage HTTP/2 connection reuse (i.e., most browsers) to produce 404 errors when accessing a second host after a connection to another host has already been established.
 
 > https://istio.io/latest/docs/ops/common-problems/network-issues/#404-errors-occur-when-multiple-gateways-configured-with-same-tls-certificate
+
+
+# 5. Create RequestAuthentication and AuthorizationPolicy 
+```
+$ git clone https://github.com/developer-onizuka/istioAuth0
+$ cd istioAuth0
+$ kubectl apply -f auth0-jwt-onprem.yaml 
+```
+
+# 6. Start Auth0 aware Pod
+```
+$ kubectl delete deployment nginx-onprem
+$ kubectl apply -f nginx-onprem-auth0.yaml 
+```
+
+# 7. Create JWT for Employee
+
+It is similar the URL below: <br>
+> https://github.com/developer-onizuka/Istio_ingressGateway#7-1-create-jwt
+
+
+# 8. Access with JWT
+
+You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) with google-chrome.
+
+<img src="https://github.com/developer-onizuka/Istio_ingressGateway/blob/main/ingress_auth0_3.png" width="480">
+

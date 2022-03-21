@@ -127,13 +127,11 @@ $ kubectl apply -f nginx-onprem-auth0.yaml
 ```
 
 # 7. Create JWT for Employee
-
-It is similar the URL below: <br>
+Refer to the URL below: <br>
 > https://github.com/developer-onizuka/Istio_ingressGateway#7-1-create-jwt
 
 
 # 8. Access with JWT
-
 You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) with google-chrome.
 
 <img src="https://github.com/developer-onizuka/Istio_ingressGateway/blob/main/ingress_auth0_3.png" width="480">

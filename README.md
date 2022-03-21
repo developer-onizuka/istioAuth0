@@ -2,8 +2,13 @@
 > https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/
 
 # 1. Create a L7 Aware Access Gateway, Nginx and Employee Application
-This Web server is just HTTP not HTTPS. What I'm gonna chage is make the Gateway available for HTTPS access.
+But the Web server is just HTTP not HTTPS. First of all, What I'm gonna chage is make the Gateway available for HTTPS access.
 > https://github.com/developer-onizuka/hybridCloud#6-l7-aware-access
+
+  1) Configure a TLS ingress gateway access <br>
+  2) Create RequestAuthentication and AuthorizationPolicy <br>
+  3) Create JWT for Employee <br>
+  4) Access with JWT <br>
 
 # 2. Configure a TLS ingress gateway (Gateway available for HTTPS access)
 # 2-1. Create a root certificate and private key to sign the certificates for your services

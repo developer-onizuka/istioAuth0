@@ -19,6 +19,20 @@ $ openssl x509 -req -sha256 -days 365 -CA example.com.crt -CAkey example.com.key
 # 3. Configure a TLS ingress gateway
 ```
 $ kubectl create -n istio-system secret tls onprem-credential --key=onprem.example.com.key --cert=onprem.example.com.crt
+$ kubectl describe -n istio-system secrets onprem-credential 
+Name:         onprem-credential
+Namespace:    istio-system
+Labels:       <none>
+Annotations:  <none>
+
+Type:  kubernetes.io/tls
+
+Data
+====
+tls.crt:  1054 bytes
+tls.key:  1704 bytes
+```
+```
 $ kubectl apply -f ingress-gateway-L7-https.yaml
 ```
 

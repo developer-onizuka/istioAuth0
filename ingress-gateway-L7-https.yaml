@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: employee-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+    #istio: hybridcloud
+  servers:
+  - port:
+      number: 443
+      name: employee-gateway-https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: onprem-credential
+    hosts:
+    - "*"
+  #- port:
+  #    number: 30001
+  #    name: onprem-gateway
+  #    protocol: HTTP
+  #  hosts:
+  #  - "*"
+  #- port:
+  #    number: 30002
+  #    name: azure-gateway
+  #    protocol: HTTP
+  #  hosts:
+  #  - "*"

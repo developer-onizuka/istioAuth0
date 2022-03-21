@@ -1,0 +1,28 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: require-auth0-jwt
+spec:
+  selector:
+    matchLabels:
+      require-auth0: enabled
+  jwtRules:
+  - issuer: https://dev-dnkam18n.us.auth0.com/
+    jwksUri: https://dev-dnkam18n.us.auth0.com/.well-known/jwks.json
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: onprem-policy
+  labels:
+    app: onprem
+spec:
+  selector:
+    matchLabels:
+      require-auth0: enabled
+  action: ALLOW
+  rules:
+  - when:
+    - key: request.auth.audiences
+      values:
+      - https://onprem.example.com

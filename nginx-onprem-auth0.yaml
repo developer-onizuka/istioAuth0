@@ -1,0 +1,64 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-onprem-vsvc
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - employee-gateway
+  http:
+  - match:
+    - headers:
+       host:
+        prefix: onprem
+    route:
+    - destination:
+        port:
+          number: 8080
+        host: nginx-onprem-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-onprem-svc
+  labels:
+    app: nginx-onprem-svc
+spec:
+  ports:
+  - port: 8080
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: nginx-onprem
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-onprem
+spec:
+  selector:
+    matchLabels:
+      app: nginx-onprem
+      require-auth0: enabled
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx-onprem
+        require-auth0: enabled
+    spec:
+      volumes:
+      - name: nginx-onprem-config
+        configMap:
+          name: nginx-onprem-config
+      containers:
+      - name: nginx
+        image: docker.io/nginx:1.14.2
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: nginx-onprem-config
+          readOnly: true
+        ports:
+        - containerPort: 80

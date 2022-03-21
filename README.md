@@ -5,7 +5,7 @@
 This Web server is just HTTP not HTTPS. What I'm gonna chage is make the Gateway available for HTTPS access.
 > https://github.com/developer-onizuka/hybridCloud#6-l7-aware-access
 
-# 2. Configure a TLS ingress gateway
+# 2. Configure a TLS ingress gateway (Gateway available for HTTPS access)
 # 2-1. Create a root certificate and private key to sign the certificates for your services
 ```
 $ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc./CN=example.com' -keyout example.com.key -out example.com.crt

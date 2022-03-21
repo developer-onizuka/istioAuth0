@@ -1,11 +1,23 @@
 # istioAuth0
 > https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/
 
+# 0. Create a L7 Aware Access Gateway, Nginx and Employee Application
+This Web server is just HTTP not HTTPS. What I'm gonna chage is make the Gateway available for HTTPS access.
+> https://github.com/developer-onizuka/hybridCloud#6-l7-aware-access
+
+# 1. Create a root certificate and private key to sign the certificates for your services
 ```
 $ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc./CN=example.com' -keyout example.com.key -out example.com.crt
+```
 
+# 2. Create a certificate and a private key for onprem.example.com
+```
 $ openssl req -out onprem.example.com.csr -newkey rsa:2048 -nodes -keyout onprem.example.com.key -subj "/CN=onprem.example.com/O=employee organization"
 $ openssl x509 -req -sha256 -days 365 -CA example.com.crt -CAkey example.com.key -set_serial 0 -in onprem.example.com.csr -out onprem.example.com.crt
+```
 
+# 3. Configure a TLS ingress gateway
+```
 $ kubectl create -n istio-system secret tls onprem-credential --key=onprem.example.com.key --cert=onprem.example.com.crt
+$ kubectl apply -f ingress-gateway-L7-https.yaml
 ```

@@ -94,3 +94,21 @@ x-envoy-upstream-service-time: 15
 < 
 * Connection #0 to host onprem.example.com left intact
 ```
+
+
+# X. 404 Error
+```
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* old SSL session ID is stale, removing
+* Connection state changed (MAX_CONCURRENT_STREAMS == 2147483647)!
+< HTTP/2 404 
+< date: Mon, 21 Mar 2022 09:05:40 GMT
+< server: istio-envoy
+< 
+* Connection #0 to host animals.example.com left intact
+```
+
+If you find 404 error, then you might use the same TLS certificate. Configuring more than one gateway using the same TLS certificate will cause browsers that leverage HTTP/2 connection reuse (i.e., most browsers) to produce 404 errors when accessing a second host after a connection to another host has already been established.
+
+> https://istio.io/latest/docs/ops/common-problems/network-issues/#404-errors-occur-when-multiple-gateways-configured-with-same-tls-certificate

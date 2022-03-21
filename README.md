@@ -1,22 +1,23 @@
-# istioAuth0
+# Deploy API with JWT authentication with Istio and Auth0
 > https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/
 
-# 0. Create a L7 Aware Access Gateway, Nginx and Employee Application
+# 1. Create a L7 Aware Access Gateway, Nginx and Employee Application
 This Web server is just HTTP not HTTPS. What I'm gonna chage is make the Gateway available for HTTPS access.
 > https://github.com/developer-onizuka/hybridCloud#6-l7-aware-access
 
-# 1. Create a root certificate and private key to sign the certificates for your services
+# 2. Configure a TLS ingress gateway
+# 2-1. Create a root certificate and private key to sign the certificates for your services
 ```
 $ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc./CN=example.com' -keyout example.com.key -out example.com.crt
 ```
 
-# 2. Create a certificate and a private key for onprem.example.com
+# 2-2. Create a certificate and a private key for onprem.example.com
 ```
 $ openssl req -out onprem.example.com.csr -newkey rsa:2048 -nodes -keyout onprem.example.com.key -subj "/CN=onprem.example.com/O=employee organization"
 $ openssl x509 -req -sha256 -days 365 -CA example.com.crt -CAkey example.com.key -set_serial 0 -in onprem.example.com.csr -out onprem.example.com.crt
 ```
 
-# 3. Configure a TLS ingress gateway
+# 2-3. Configure a TLS ingress gateway
 ```
 $ kubectl create -n istio-system secret tls onprem-credential --key=onprem.example.com.key --cert=onprem.example.com.crt
 $ kubectl describe -n istio-system secrets onprem-credential 
@@ -36,7 +37,7 @@ tls.key:  1704 bytes
 $ kubectl apply -f ingress-gateway-L7-https.yaml
 ```
 
-# 4. cURL
+# 2-4. cURL
 ```
 $ curl https://onprem.example.com -k -v --head
 *   Trying 192.168.33.220:443...
@@ -95,7 +96,7 @@ x-envoy-upstream-service-time: 15
 * Connection #0 to host onprem.example.com left intact
 ```
 
-# 4-1. 404 Error
+# 2-5. 404 Error
 ```
 * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
 * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
@@ -113,25 +114,28 @@ If you find 404 error, then you might use the same TLS certificate. Configuring 
 > https://istio.io/latest/docs/ops/common-problems/network-issues/#404-errors-occur-when-multiple-gateways-configured-with-same-tls-certificate
 
 
-# 5. Create RequestAuthentication and AuthorizationPolicy 
+# 3. Create RequestAuthentication and AuthorizationPolicy 
 ```
 $ git clone https://github.com/developer-onizuka/istioAuth0
 $ cd istioAuth0
 $ kubectl apply -f auth0-jwt-onprem.yaml 
 ```
 
-# 6. Start Auth0 aware Pod
+# 4. Start Auth0 aware Pod
 ```
 $ kubectl delete deployment nginx-onprem
 $ kubectl apply -f nginx-onprem-auth0.yaml 
 ```
 
-# 7. Create JWT for Employee
+# 5. Create JWT for Employee
 Refer to the URL below: <br>
 > https://github.com/developer-onizuka/Istio_ingressGateway#7-1-create-jwt
 
 
-# 8. Access with JWT
+# 6. Access without JWT
+![istioAuth0_1](https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_1.png)
+
+# 7. Access with JWT
 You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) with google-chrome.
 
 <img src="https://github.com/developer-onizuka/Istio_ingressGateway/blob/main/ingress_auth0_3.png" width="480">

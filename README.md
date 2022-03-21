@@ -5,10 +5,10 @@
 But the Web server is just HTTP not HTTPS. First of all, What I'm gonna chage is make the Gateway available for HTTPS access.
 > https://github.com/developer-onizuka/hybridCloud#6-l7-aware-access
 
-  1) Configure a TLS ingress gateway access <br>
-  2) Create RequestAuthentication and AuthorizationPolicy <br>
-  3) Create JWT for Employee <br>
-  4) Access with JWT <br>
+  1) [Configure a TLS ingress gateway access](https://github.com/developer-onizuka/istioAuth0#2-configure-a-tls-ingress-gateway-gateway-available-for-https-access) <br>
+  2) [Create RequestAuthentication and AuthorizationPolicy](https://github.com/developer-onizuka/istioAuth0#3-create-requestauthentication-and-authorizationpolicy) <br>
+  3) [Create JWT for Employee](https://github.com/developer-onizuka/istioAuth0#5-create-jwt-for-employee) <br>
+  4) [Access with JWT](https://github.com/developer-onizuka/istioAuth0#7-access-with-jwt) <br>
 
 # 2. Configure a TLS ingress gateway (Gateway available for HTTPS access)
 # 2-1. Create a root certificate and private key to sign the certificates for your services

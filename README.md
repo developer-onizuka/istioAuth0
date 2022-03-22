@@ -10,7 +10,7 @@ But the gateway is not HTTPS but HTTP. First of all, What I'm gonna chage is mak
   3) [Create JWT for Employee](https://github.com/developer-onizuka/istioAuth0#5-create-jwt-for-employee) <br>
   4) [Access with JWT](https://github.com/developer-onizuka/istioAuth0#7-access-with-jwt) <br>
 
-# 2. Configure a TLS ingress gateway (Gateway available for HTTPS access)
+# 2. Configure a TLS ingress gateway (HTTPS)
 # 2-1. Create a root certificate and private key to sign the certificates for your services
 ```
 $ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc./CN=example.com' -keyout example.com.key -out example.com.crt

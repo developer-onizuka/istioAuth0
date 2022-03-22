@@ -138,7 +138,7 @@ Refer to the URL below: <br>
 
 
 # 6. Access without JWT
-![istioAuth0_1](https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_1.png)
+<img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_1.png" width="480">
 
 # 7. Access with JWT
 You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) with google-chrome.
@@ -147,4 +147,4 @@ You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgp
 
 <br>
 
-![istioAuth0_2](https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_2.png)
+<img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_2.png" width="480">

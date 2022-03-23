@@ -12,6 +12,8 @@ But the gateway is not HTTPS but HTTP. First of all, What I'm gonna chage is mak
 
 # 2. Configure a TLS ingress gateway (HTTPS)
 # 2-1. Create a root certificate and private key to sign the certificates for your services
+This is self-signed certificate with openssl. Not suitable for public web servers.
+>https://business.xserver.ne.jp/option/ssl/about_ssl.php
 ```
 $ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc./CN=example.com' -keyout example.com.key -out example.com.crt
 ```

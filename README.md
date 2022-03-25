@@ -160,7 +160,7 @@ Let's access!<br>
 with Auth
 ---
 1) Client sets Bearer token in Browser. 
-2) Client sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
+2) Client's Browser sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
 3) Auth0 sends JWT (Token to access to Server) to Client if Bearer token is as expected.
 4) Client obtains JWT.
 5) Client requests to Server with JWT.
@@ -189,18 +189,15 @@ without Auth (require-auth0: enabled)
 ---
 1) No Bearer token in Browser. 
 2) Client asks Auth0 to provide JWT to access Server without Bearer token. (Authentication)
-3) Auth0 can not send JWT because no available Bearer token is attached.
-4) Client does not obtain JWT.
-5) Client requests to Server without JWT.
-6) Server responds "RBAC: access denied".
+3) Auth0 responds "RBAC: access denied".
 
 ```
-         #1.    #2.    #4.    #5.
- Client -+------+------+------+------+--------------------
-                |      ^      |      ^
-                |      |      |      |
-                |      |      V      | #6.
- Server --------|------|------+------+-------------------- require-auth0: enabled
+         #1.    #2.    "RBAC: access denied"
+ Client -+------+------+----------------------------------
+                |      ^  
+                |      | 
+                |      | 
+ Server --------|------|---------------------------------- require-auth0: enabled
                 |      |
                 |      |
                 V      | #3.

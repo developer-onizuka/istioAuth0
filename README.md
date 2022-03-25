@@ -189,7 +189,7 @@ without Auth (require-auth0: enabled)
 ---
 1) No Bearer token in Browser. 
 2) Client asks Auth0 to provide JWT to access Server without Bearer token. (Authentication)
-3) Auth0 responds "RBAC: access denied".
+3) Auth0 responds "RBAC: access denied". ie, Auth0 itself already knows Clinet has not had any RBAC to access to Server.
 
 ```
          #1.    #2.    "RBAC: access denied"

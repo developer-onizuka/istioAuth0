@@ -191,8 +191,8 @@ without Auth for the Server (no label of require-auth0)
                 |      ^     
                 |      |    
                 V      |     
- Server ---------------+---------------------------------- kind: RequestAuthentication (no label of require-auth0)
-                                                           kind: AuthorizationPolicy (no label of require-auth0)
+ Server ---------------+---------------------------------- no label of require-auth0
+ 
                
                
  Auth0  --------------------------------------------------

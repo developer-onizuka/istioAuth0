@@ -171,9 +171,9 @@ Let's access!<br>
 ```
 
 - with Auth (in Browser) 
-  - 1) Auth0 address is retrieved by Base64 Decord of bearer token you already set in Browser. 
-  - 2) Client asks Auth0 to provide JWT to access Server.
-  - 3) 
+  1) Auth0 address is retrieved by Base64 Decord of bearer token you already set in Browser. 
+  2) Client asks Auth0 to provide JWT to access Server.
+  3) 
 
 ```
            1.     4.     5.                   9.

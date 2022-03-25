@@ -143,7 +143,7 @@ Refer to the URL below: <br>
 <img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_1.png" width="480">
 
 # 7. Access with JWT
-You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) with google-chrome.
+You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) so that you can set Bearer token in google-chrome.
 
 <img src="https://github.com/developer-onizuka/Istio_ingressGateway/blob/main/ingress_auth0_3.png" width="480">
 

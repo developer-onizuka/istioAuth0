@@ -159,7 +159,7 @@ Let's access!<br>
 without Auth
 ---
 1) No Bearer token in Browser. 
-2) Client sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
+2) Client asks Auth0 to provide JWT to access Server without Bearer token. (Authentication)
 3) Auth0 can not send JWT because no available Bearer token is attached.
 4) Client does not obtain JWT.
 5) Client requests to Server without JWT.

@@ -183,7 +183,8 @@ with Auth (in Browser)
 7) Auth0 responds it has been already authenticated. <br>
    But, the JWT might have been expired in some cases. Then, the responce will be negative.
 9) Server finally responds to the request Client did in #5.
-10) Client finally gets the responce from Server. (Fin)
+10) Client finally gets the responce from Server. (Fin) <br>
+   If the JWT has been expired, Client's Browser might say "JWT is expired."
 
 ```
          #1.    #2.    #4.    #5.                  #9.

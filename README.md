@@ -159,15 +159,15 @@ without Auth
 ---
 ```
  
- Client ---+---------------------------------------------
+ Client ---+----------------------------------------------
            |            
            |              
            V               
- Server ---+---------------------------------------------
+ Server ---+----------------------------------------------
            RBAC: access denied 
    
 
- Auth0  -------------------------------------------------
+ Auth0  --------------------------------------------------
  (https://xxx.us.auth0.com/)
 ```
 
@@ -180,18 +180,19 @@ with Auth (in Browser)
 5) Client requests to Server with JWT.
 6) Server asks if Auth0 authenticated the JWT.
 7) Auth0 responds it has been already authenticated.
-8) Server finally responds to the request Client did in 3.
+8) Server finally responds to the request Client did in #5.
+9) Client finally gets the responce from Server. (Fin)
 
 ```
-           1.     4.     5.                   9.
- Client ---+------+------+--------------------+----------
-           | 2.   ^      |                    ^
-           |      |      |                    |
-           |      |      V      6.            | 8.
- Server ---|------|------+------+------+------+----------
-           |      |             |      ^
-           |      |             |      |
-           V      | 3.          V      | 7.
- Auth0  ---+------+-------------+------+-----------------
+         #1.    #2.    #4.    #5.                  #9.
+ Client -+------+------+------+--------------------+------
+                |      ^      |                    ^
+                |      |      |                    |
+                |      |      V      #6.           | #8.
+ Server --------|------|------+------+------+------+------
+                |      |             |      ^
+                |      |             |      |
+                V      | #3.         V      | #7.
+ Auth0  --------+------+-------------+------+-------------
  (https://xxx.us.auth0.com/)
 ```

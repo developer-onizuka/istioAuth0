@@ -139,10 +139,10 @@ Refer to the URL below: <br>
 > https://github.com/developer-onizuka/Istio_ingressGateway#7-1-create-jwt
 
 
-# 6. Access without JWT
+# 6. Access without Bearer token
 <img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_1.png" width="480">
 
-# 7. Access with JWT
+# 7. Access with Bearer token
 You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) so that you can set Bearer token in google-chrome.
 
 <img src="https://github.com/developer-onizuka/Istio_ingressGateway/blob/main/ingress_auth0_3.png" width="480">

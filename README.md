@@ -150,3 +150,41 @@ You can use [Modheader](https://chrome.google.com/webstore/detail/modheader/idgp
 Let's access!<br>
 
 <img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_2.png" width="480">
+
+
+# 8. How to work
+> https://note.minna-no-ginko.com/n/nb59e64e603e2
+
+- without Auth
+```
+ 
+ Client ---+---------------------------------------------
+           |            
+           |              
+           V               
+ Server ---+---------------------------------------------
+           RBAC: access denied 
+   
+
+ Autu0  -------------------------------------------------
+ (https://xxx.us.auth0.com/)
+```
+
+- with Auth (in Browser) 
+  - 1. Auth0 address is retrieved by Base64 Decord of bearer token you already set in Browser. 
+  - 2. Client asks Auth0 to provide JWT to access Server.
+  - 3. 
+
+```
+           1.     4.     5.                   9.
+ Client ---+------+------+--------------------+------
+           | 2.   ^      |                    ^
+           |      |      |                    |
+           |      |      V      6.            | 8.
+ Server ---|------|------+------+------+------+------
+           |      |             |      ^
+           |      |             |      |
+           V      | 3.          V      | 7.
+ Autu0  ---+------+-------------+------+-------------
+ (https://xxx.us.auth0.com/)
+```

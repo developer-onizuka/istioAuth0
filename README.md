@@ -175,8 +175,8 @@ without Auth
 with Auth (in Browser) 
 ---
 1) Client sets Bearer token in Browser. 
-2) Client sends Bearer token and asks Auth0 to provide JWT to access Server.
-3) Auth0 sends JWT (Token to access to Server) to Client.
+2) Client sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
+3) Auth0 sends JWT (Token to access to Server) to Client if Bearer token is as expected.
 4) Client obtains JWT.
 5) Client requests to Server with JWT.
 6) Server asks if Auth0 authenticated the JWT.

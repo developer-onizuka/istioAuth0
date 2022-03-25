@@ -157,7 +157,7 @@ Let's access!<br>
 > https://programmaticponderings.com/2019/01/06/securing-kubernetes-withistio-end-user-authentication-using-json-web-tokens-jwt/
 
 
-with Auth (in Browser) 
+with Auth
 ---
 1) Client sets Bearer token in Browser. 
 2) Client sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)

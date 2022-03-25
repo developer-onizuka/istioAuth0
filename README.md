@@ -156,6 +156,35 @@ Let's access!<br>
 > https://note.minna-no-ginko.com/n/n9e752ad2ab4c <br>
 > https://programmaticponderings.com/2019/01/06/securing-kubernetes-withistio-end-user-authentication-using-json-web-tokens-jwt/
 
+
+with Auth (in Browser) 
+---
+1) Client sets Bearer token in Browser. 
+2) Client sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
+3) Auth0 sends JWT (Token to access to Server) to Client if Bearer token is as expected.
+4) Client obtains JWT.
+5) Client requests to Server with JWT.
+6) Server asks if Auth0 authenticated the JWT.
+7) Auth0 responds it has been already authenticated. <br>
+   But, the JWT might have been expired in some cases. Then, the responce will be negative.
+9) Server finally responds to the request Client did in #5.
+10) Client finally gets the responce from Server. (Fin) <br>
+   If the JWT has been expired, Client's Browser might say "JWT is expired."
+
+```
+         #1.    #2.    #4.    #5.                  #9.
+ Client -+------+------+------+--------------------+------
+                |      ^      |                    ^
+                |      |      |                    |
+                |      |      V      #6.           | #8.
+ Server --------|------|------+------+------+------+------ require-auth0: enabled
+                |      |             |      ^
+                |      |             |      |
+                V      | #3.         V      | #7.
+ Auth0  --------+------+-------------+------+-------------
+ (https://xxx.us.auth0.com/)
+```
+
 without Auth for the Server (require-auth0: enabled)
 ---
 1) No Bearer token in Browser. 
@@ -199,30 +228,3 @@ without Auth for the Server (no label of require-auth0)
  (https://xxx.us.auth0.com/)
 ```
 
-with Auth (in Browser) 
----
-1) Client sets Bearer token in Browser. 
-2) Client sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
-3) Auth0 sends JWT (Token to access to Server) to Client if Bearer token is as expected.
-4) Client obtains JWT.
-5) Client requests to Server with JWT.
-6) Server asks if Auth0 authenticated the JWT.
-7) Auth0 responds it has been already authenticated. <br>
-   But, the JWT might have been expired in some cases. Then, the responce will be negative.
-9) Server finally responds to the request Client did in #5.
-10) Client finally gets the responce from Server. (Fin) <br>
-   If the JWT has been expired, Client's Browser might say "JWT is expired."
-
-```
-         #1.    #2.    #4.    #5.                  #9.
- Client -+------+------+------+--------------------+------
-                |      ^      |                    ^
-                |      |      |                    |
-                |      |      V      #6.           | #8.
- Server --------|------|------+------+------+------+------ require-auth0: enabled
-                |      |             |      ^
-                |      |             |      |
-                V      | #3.         V      | #7.
- Auth0  --------+------+-------------+------+-------------
- (https://xxx.us.auth0.com/)
-```

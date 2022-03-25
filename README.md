@@ -185,7 +185,7 @@ with Auth (in Browser)
  (https://xxx.us.auth0.com/)
 ```
 
-without Auth for the Server (require-auth0: enabled)
+without Auth (require-auth0: enabled)
 ---
 1) No Bearer token in Browser. 
 2) Client asks Auth0 to provide JWT to access Server without Bearer token. (Authentication)
@@ -208,7 +208,7 @@ without Auth for the Server (require-auth0: enabled)
  (https://xxx.us.auth0.com/)
 ```
 
-without Auth for the Server (no label of require-auth0)
+without Auth (no label of require-auth0)
 ---
 1) No Bearer token in Browser. 
 2) Client requests to Server. Not necessary to access Auth0 before it.

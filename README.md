@@ -180,7 +180,7 @@ with Auth (in Browser)
 4) Client obtains JWT.
 5) Client requests to Server with JWT.
 6) Server asks if Auth0 authenticated the JWT.
-7) Auth0 responds it has been already authenticated.
+7) Auth0 responds it has been already authenticated. <br>
    But, the JWT might have been expired in some cases. Then, the responce will be negative.
 9) Server finally responds to the request Client did in #5.
 10) Client finally gets the responce from Server. (Fin)

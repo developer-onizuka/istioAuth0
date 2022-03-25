@@ -155,7 +155,8 @@ Let's access!<br>
 # 8. How to work
 > https://note.minna-no-ginko.com/n/nb59e64e603e2
 
-- without Auth
+without Auth
+---
 ```
  
  Client ---+---------------------------------------------
@@ -170,7 +171,8 @@ Let's access!<br>
  (https://xxx.us.auth0.com/)
 ```
 
-- with Auth (in Browser) 
+with Auth (in Browser) 
+---
 1) Auth0 address is retrieved by Base64 Decord of bearer token you already set in Browser. 
 2) Client asks Auth0 to provide JWT to access Server.
 3) 

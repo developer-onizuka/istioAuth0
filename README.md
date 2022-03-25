@@ -175,8 +175,8 @@ with Auth (in Browser)
 ---
 1) Auth0 address is retrieved by Base64 Decord of bearer token you already set in Browser. 
 2) Client asks Auth0 to provide JWT to access Server.
-3) Auth0 sends the JWT(Token to access to Server) to Client.
-4) Client obtains the JWT.
+3) Auth0 sends JWT (Token to access to Server) to Client.
+4) Client obtains JWT.
 5) Client requests to Server with JWT.
 6) Server asks if Auth0 authenticated the JWT.
 7) Auth0 responds it has been already authenticated.

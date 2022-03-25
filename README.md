@@ -217,7 +217,7 @@ without Auth (no label of require-auth0)
                 |      ^     
                 |      |    
                 V      |     
- Server ---------------+---------------------------------- no label of require-auth0
+ Server --------+------+---------------------------------- no label of require-auth0
  
                
                

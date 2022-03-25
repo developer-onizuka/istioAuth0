@@ -156,7 +156,7 @@ Let's access!<br>
 > https://note.minna-no-ginko.com/n/n9e752ad2ab4c <br>
 > https://programmaticponderings.com/2019/01/06/securing-kubernetes-withistio-end-user-authentication-using-json-web-tokens-jwt/
 
-without Auth
+without Auth for the Server (require-auth0: enabled)
 ---
 1) No Bearer token in Browser. 
 2) Client asks Auth0 to provide JWT to access Server without Bearer token. (Authentication)
@@ -171,11 +171,31 @@ without Auth
                 |      ^      |      ^
                 |      |      |      |
                 |      |      V      | #6.
- Server --------|------|------+------+-------------------- kind: RequestAuthentication
-                |      |                                   kind: AuthorizationPolicy
+ Server --------|------|------+------+-------------------- kind: RequestAuthentication (require-auth0: enabled)
+                |      |                                   kind: AuthorizationPolicy (require-auth0: enabled)
                 |      |
                 V      | #3.
  Auth0  --------+------+----------------------------------
+ (https://xxx.us.auth0.com/)
+```
+
+without Auth for the Server (no label of require-auth0)
+---
+1) No Bearer token in Browser. 
+2) Client requests to Server. Not necessary to access Auth0 before it.
+3) Server responds to the request Client, because Server does not need to be controlled by auth0.
+
+```
+         #1.    #2.    #3.    
+ Client -+------+------+----------------------------------
+                |      ^     
+                |      |    
+                V      |     
+ Server ---------------+---------------------------------- kind: RequestAuthentication (no label of require-auth0)
+                                                           kind: AuthorizationPolicy (no label of require-auth0)
+               
+               
+ Auth0  --------------------------------------------------
  (https://xxx.us.auth0.com/)
 ```
 
@@ -200,7 +220,7 @@ with Auth (in Browser)
                 |      |      |                    |
                 |      |      V      #6.           | #8.
  Server --------|------|------+------+------+------+------ kind: RequestAuthentication
-                |      |             |      ^              kind: AuthorizationPolicy
+                |      |             |      ^              kind: AuthorizationPolicy (require-auth0: enabled)
                 |      |             |      |
                 V      | #3.         V      | #7.
  Auth0  --------+------+-------------+------+-------------

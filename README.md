@@ -164,8 +164,8 @@ without Auth
            |            
            |              
            V               
- Server ---+---------------------------------------------- kind: AuthorizationPolicy
-           RBAC: access denied 
+ Server ---+---------------------------------------------- kind: RequestAuthentication
+           RBAC: access denied                             kind: AuthorizationPolicy
    
 
  Auth0  --------------------------------------------------
@@ -192,8 +192,8 @@ with Auth (in Browser)
                 |      ^      |                    ^
                 |      |      |                    |
                 |      |      V      #6.           | #8.
- Server --------|------|------+------+------+------+------ kind: AuthorizationPolicy
-                |      |             |      ^
+ Server --------|------|------+------+------+------+------ kind: RequestAuthentication
+                |      |             |      ^              kind: AuthorizationPolicy
                 |      |             |      |
                 V      | #3.         V      | #7.
  Auth0  --------+------+-------------+------+-------------

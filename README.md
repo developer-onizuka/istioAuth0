@@ -167,7 +167,7 @@ without Auth
            RBAC: access denied 
    
 
- Autu0  -------------------------------------------------
+ Auth0  -------------------------------------------------
  (https://xxx.us.auth0.com/)
 ```
 
@@ -175,18 +175,23 @@ with Auth (in Browser)
 ---
 1) Auth0 address is retrieved by Base64 Decord of bearer token you already set in Browser. 
 2) Client asks Auth0 to provide JWT to access Server.
-3) 
+3) Auth0 sends the JWT(Token to access to Server) to Client.
+4) Client obtains the JWT.
+5) Client requests to Server with JWT.
+6) Server asks if Auth0 authenticated the JWT.
+7) Auth0 responds it has been already authenticated.
+8) Server finally responds to the request Client did in 3.
 
 ```
            1.     4.     5.                   9.
- Client ---+------+------+--------------------+------
+ Client ---+------+------+--------------------+----------
            | 2.   ^      |                    ^
            |      |      |                    |
            |      |      V      6.            | 8.
- Server ---|------|------+------+------+------+------
+ Server ---|------|------+------+------+------+----------
            |      |             |      ^
            |      |             |      |
            V      | 3.          V      | 7.
- Autu0  ---+------+-------------+------+-------------
+ Auth0  ---+------+-------------+------+-----------------
  (https://xxx.us.auth0.com/)
 ```

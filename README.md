@@ -153,7 +153,8 @@ Let's access!<br>
 
 
 # 8. How to work
-> https://note.minna-no-ginko.com/n/nb59e64e603e2
+> https://note.minna-no-ginko.com/n/nb59e64e603e2 <br>
+> https://programmaticponderings.com/2019/01/06/securing-kubernetes-withistio-end-user-authentication-using-json-web-tokens-jwt/
 
 without Auth
 ---

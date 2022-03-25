@@ -158,17 +158,24 @@ Let's access!<br>
 
 without Auth
 ---
-```
- 
- Client ---+----------------------------------------------
-           |            
-           |              
-           V               
- Server ---+---------------------------------------------- kind: RequestAuthentication
-           RBAC: access denied                             kind: AuthorizationPolicy
-   
+1) No Bearer token in Browser. 
+2) Client sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
+3) Auth0 can not send JWT because no available Bearer token is attached.
+4) Client does not obtain JWT.
+5) Client requests to Server without JWT.
+6) Server responds "RBAC: access denied".
 
- Auth0  --------------------------------------------------
+```
+         #1.    #2.    #4.    #5.
+ Client -+------+------+------+------+--------------------
+                |      ^      |      ^
+                |      |      |      |
+                |      |      V      | #6.
+ Server --------|------|------+------+-------------------- kind: RequestAuthentication
+                |      |                                   kind: AuthorizationPolicy
+                |      |
+                V      | #3.
+ Auth0  --------+------+----------------------------------
  (https://xxx.us.auth0.com/)
 ```
 

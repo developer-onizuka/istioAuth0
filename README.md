@@ -171,8 +171,8 @@ without Auth for the Server (require-auth0: enabled)
                 |      ^      |      ^
                 |      |      |      |
                 |      |      V      | #6.
- Server --------|------|------+------+-------------------- kind: RequestAuthentication (require-auth0: enabled)
-                |      |                                   kind: AuthorizationPolicy (require-auth0: enabled)
+ Server --------|------|------+------+-------------------- require-auth0: enabled
+                |      |
                 |      |
                 V      | #3.
  Auth0  --------+------+----------------------------------
@@ -219,8 +219,8 @@ with Auth (in Browser)
                 |      ^      |                    ^
                 |      |      |                    |
                 |      |      V      #6.           | #8.
- Server --------|------|------+------+------+------+------ kind: RequestAuthentication
-                |      |             |      ^              kind: AuthorizationPolicy (require-auth0: enabled)
+ Server --------|------|------+------+------+------+------ require-auth0: enabled
+                |      |             |      ^
                 |      |             |      |
                 V      | #3.         V      | #7.
  Auth0  --------+------+-------------+------+-------------

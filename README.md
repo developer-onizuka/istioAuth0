@@ -156,7 +156,7 @@ Let's access!<br>
 > https://note.minna-no-ginko.com/n/n9e752ad2ab4c <br>
 > https://programmaticponderings.com/2019/01/06/securing-kubernetes-withistio-end-user-authentication-using-json-web-tokens-jwt/
 
-[image](https://miro.medium.com/max/1190/1*AeygepIJxBwo9zbmgjGB2w.png)
+![image](https://miro.medium.com/max/1190/1*AeygepIJxBwo9zbmgjGB2w.png)
 
 
 with Auth

@@ -121,21 +121,6 @@ If you find 404 error, then you might use the same TLS certificate. Configuring 
 > https://istio.io/latest/docs/ops/common-problems/network-issues/#404-errors-occur-when-multiple-gateways-configured-with-same-tls-certificate
 
 
-# Appendix. Configure a mutal TLS ingress gateway (HTTPS)
-
-- mTLS authentication flow <br>
-![image](https://miro.medium.com/max/1190/1*AeygepIJxBwo9zbmgjGB2w.png)
-
-# A-1. Change the gateway’s definition to set the TLS mode to MUTUAL
-
-# A-2. Attempt to send an HTTPS request using the prior approach and see how it fails
-
-# A-3. Generate client certificate and private key
-
-# A-4. cURL
-
-
-
 # 3. Create RequestAuthentication and AuthorizationPolicy 
 ```
 $ git clone https://github.com/developer-onizuka/istioAuth0

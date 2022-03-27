@@ -162,7 +162,7 @@ with Auth
 2) Client's Browser sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
 3) Auth0 sends JWT (Token to access to Server) to Client if Bearer token is as expected.
 4) Client obtains JWT.
-   But, the JWT might have been expired in some cases. Then, Auth0 responds "JWT is expired".
+   But, the JWT might have been expired in some cases. Then, Auth0 responds "Jwt is expired".
 6) Client requests to Server with JWT, if not expired.
 7) Server asks if Auth0 authenticated the JWT.
 8) Auth0 responds it has been already authenticated. <br>

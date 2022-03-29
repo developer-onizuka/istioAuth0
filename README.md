@@ -235,5 +235,5 @@ See also the URL below:<br>
 https://github.com/developer-onizuka/digitalSignature
 
 
-But in the case HTTPS with Mutual TLS, I guess Authentication might not be always needed because mTLS requires client certification in addition to server certification by CA.
-
+But in the case HTTPS with Mutual TLS, I guess Authentication might not be always needed because mTLS requires client certification in addition to server certification by CA.<br>
+https://github.com/developer-onizuka/Istio_ingressGateway#appendix-configure-a-mutal-tls-ingress-gateway-https

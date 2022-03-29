@@ -227,9 +227,13 @@ without Auth (no label of require-auth0)
 ```
 
 # 9. Difference between HTTPS and Authentication
-By the way, you may think if you don't need HTTPS while using Auth0. You need to understand each goal of them, correctly. <br>
+By the way, you may think if you don't need HTTPS while using Auth0 or vice versa. You need to understand each goal of them, correctly. <br>
 The authentication and authorization module runs in the same sandbox as your application code. When an Authentication provider such as Auth0 or Azure AD is enabled, every incoming HTTPS request passes through it before being handled by your application code. <br>
 So, Authentication is used to controle RBAC while HTTPS is used to create the session key to encrypt communication between client and server. If you don't use HTTPS, then your communication is not secure even while using Authentication.
 
 See also the URL below:<br>
 https://github.com/developer-onizuka/digitalSignature
+
+
+But in the case HTTPS with TLS, I guess Authentication might not be always needed because mTLS requires client certification in addition to server certification by CA.
+

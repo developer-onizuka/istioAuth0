@@ -226,3 +226,7 @@ without Auth (no label of require-auth0)
  (https://xxx.us.auth0.com/)
 ```
 
+# 9. Difference between HTTPS and Authentication
+By the way, you may think if you don't need HTTPS while using Auth0. You need to understand each goal of them, correctly. <br>
+The authentication and authorization module runs in the same sandbox as your application code. When an Authentication provider such as Auth0 or Azure AD is enabled, every incoming HTTPS request passes through it before being handled by your application code. <br>
+So, Authentication is used to controle RBAC while HTTPS is used to create the session key to encrypt communication between client and server. If you don't use HTTPS, then your communication is not secure even while using Authentication.

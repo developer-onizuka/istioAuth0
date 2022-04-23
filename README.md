@@ -3,7 +3,7 @@
 
 # 1. Create a L7 Aware Access Gateway, Nginx and Employee Application
 You can use the [URL](https://github.com/developer-onizuka/hybridCloud#6-l7-aware-access) to create these resources.
-But the gateway is not HTTPS but HTTP. First of all, What I'm gonna change is make the Gateway available for HTTPS access.
+But the gateway is not HTTPS but HTTP. First of all, What I'm gonna change is to make the Gateway available for HTTPS access.
 
   1) [Configure a TLS ingress gateway access](https://github.com/developer-onizuka/istioAuth0#2-configure-a-tls-ingress-gateway-gateway-available-for-https-access) <br>
   2) [Create RequestAuthentication and AuthorizationPolicy](https://github.com/developer-onizuka/istioAuth0#3-create-requestauthentication-and-authorizationpolicy) <br>

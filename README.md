@@ -136,6 +136,7 @@ $ kubectl apply -f auth0-jwt-onprem.yaml
 $ kubectl delete deployment nginx-onprem
 $ kubectl apply -f nginx-onprem-auth0.yaml 
 ```
+The difference between them is the lable of "require-auth0" and if it says "enabled" then it introduces the object of AuthorizationPolicy created in #3 and it asks for RBAC to the Auth0's URL defined in RequestAuthentication.
 
 # 5. Create JWT for Employee
 Refer to the URL below: <br>

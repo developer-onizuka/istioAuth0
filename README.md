@@ -1,7 +1,7 @@
 # Deploy API with JWT authentication with Istio and Auth0
 > https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/
 
-What I am going to create is very simillar to an API gateway in Azure which can verify API keys, JWT tokens, certificates, and other credentials.<br>
+What I am going to create is very similar to an Azure API gateway which can verify API keys, JWT tokens, certificates, and other credentials.<br>
 
 > https://docs.microsoft.com/en-us/learn/modules/explore-api-management/3-api-gateways
 <img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_3.png" width="640">

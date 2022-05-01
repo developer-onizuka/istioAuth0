@@ -2,6 +2,7 @@
 > https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/
 
 What I am going to create is very similar to an Azure API gateway which can verify API keys, JWT tokens, certificates, and other credentials.<br>
+An API gateway sits between clients and services. It acts as a reverse proxy, routing requests from clients to services. It may also perform various cross-cutting tasks such as authentication, SSL termination, and rate limiting. If you don't deploy a gateway, clients must send requests directly to front-end services. However, there are some potential problems with exposing services directly to clients. <br>
 
 > https://docs.microsoft.com/en-us/learn/modules/explore-api-management/3-api-gateways
 <img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_3.png" width="640">

@@ -1,6 +1,12 @@
 # Deploy API with JWT authentication with Istio and Auth0
 > https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/
 
+What I am going to create is very simillar to an API gateway in Azure which can verify API keys, JWT tokens, certificates, and other credentials.<br>
+
+> https://docs.microsoft.com/en-us/learn/modules/explore-api-management/3-api-gateways
+<img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_3.png" width="640">
+
+
 # 1. Create a L7 Aware Access Gateway, Nginx and Employee Application
 You can use the [URL](https://github.com/developer-onizuka/hybridCloud#6-l7-aware-access) to create these resources.
 But the gateway is not HTTPS but HTTP. First of all, What I'm gonna change is to make the Gateway available for HTTPS access.
@@ -163,15 +169,15 @@ Let's access!<br>
 with Auth
 ---
 1) Client sets Bearer token in Browser. 
-2) Client's Browser sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Server. (Authentication)
+2) Client's Browser sends Bearer token to Auth0 and asks Auth0 to provide JWT to access Istio IngressG/W. (Authentication)
 3) Auth0 sends JWT (Token to access to Server) to Client if Bearer token is as expected.
 4) Client obtains JWT.
    But, the JWT might have been expired in some cases. Then, Auth0 responds "Jwt is expired".
-6) Client requests to Server with JWT, if not expired.
-7) Server asks if Auth0 authenticated the JWT.
-8) Auth0 responds it has been already authenticated. <br>
-9) Server finally responds to the request Client did in #5.
-10) Client finally gets the responce from Server. (Fin) <br>
+5) Client requests to Istio IngressG/W with JWT, if not expired.
+6) Istio IngressG/W asks if Auth0 authenticated the JWT.
+7) Auth0 responds it has been already authenticated. <br>
+8) Istio IngressG/W finally responds to the request Client did in #5.
+9) Client finally gets the responce from Istio IngressG/W. (Fin) <br>
 
 ```
          #1.    #2.    #4.    #5.                  #9.
@@ -179,8 +185,8 @@ with Auth
                 |      ^      |                    ^
                 |      |      |                    |
                 |      |      V      #6.           | #8.
- Server --------|------|------+------+------+------+------ require-auth0: enabled
-                |      |             |      ^
+ Istio  --------|------|------+------+------+------+------ require-auth0: enabled
+ IngressG/W     |      |             |      ^
                 |      |             |      |
                 V      | #3.         V      | #7.
  Auth0  --------+------+-------------+------+-------------
@@ -190,7 +196,7 @@ with Auth
 without Auth (require-auth0: enabled)
 ---
 1) No Bearer token in Browser. 
-2) Client asks Auth0 to provide JWT to access Server without Bearer token. (Authentication)
+2) Client asks Auth0 to provide JWT to access Istio IngressG/W without Bearer token. (Authentication)
 3) Auth0 responds "RBAC: access denied". ie, Auth0 itself already knows Clinet has not had any RBAC to access to Server.
 
 ```
@@ -199,8 +205,8 @@ without Auth (require-auth0: enabled)
                 |      ^  
                 |      | 
                 |      | 
- Server --------|------|---------------------------------- require-auth0: enabled
-                |      |
+ Istio  --------|------|---------------------------------- require-auth0: enabled
+ IngressG/W     |      |
                 |      |
                 V      | #3.
  Auth0  --------+------+----------------------------------
@@ -211,7 +217,7 @@ without Auth (no label of require-auth0)
 ---
 1) No Bearer token in Browser. 
 2) Client requests to Server. Not necessary to access Auth0 before it.
-3) Server responds to the request Client, because Server does not need to be controlled by auth0.
+3) Istio IngressG/W responds to the request Client, because Istio IngressG/W does not need to be controlled by auth0.
 
 ```
          #1.    #2.    #3.    
@@ -219,8 +225,8 @@ without Auth (no label of require-auth0)
                 |      ^     
                 |      |    
                 V      |     
- Server --------+------+---------------------------------- no label of require-auth0
- 
+ Istio  --------+------+---------------------------------- no label of require-auth0
+ IngressG/W
                
                
  Auth0  --------------------------------------------------

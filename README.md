@@ -240,7 +240,7 @@ The authentication and authorization module runs in the same sandbox as your app
 So, Authentication is used to control RBAC while HTTPS is used to create the session key to encrypt communication between client and server. If you don't use HTTPS, then your communication is not secure even while using Authentication.
 
 See also the URL below:<br>
-https://github.com/developer-onizuka/digitalSignature
+> https://github.com/developer-onizuka/digitalSignature
 
-**If you are an API's plublisher of SaaS services and you run some buissinesses, you might control the access from API callers(means your customers) thru  Autehtication by some ID providers so that they who need to consume the published APIs can include a valid subscription key in HTTP requests when they make calls to those APIs.**
-
+**If you are an API's plublisher of SaaS services and you run some buissinesses, you might control the access from API callers(means your customers) thru  Autehtication by some ID providers so that they who need to consume the published APIs can include a valid subscription key in HTTP requests when they make calls to those APIs.** <br>
+> https://docs.microsoft.com/en-us/learn/modules/explore-api-management/6-secure-access-api-subscriptions

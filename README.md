@@ -166,7 +166,7 @@ The identifier is used to identify which service the Istio IngressGateway takes 
 <img src="https://github.com/developer-onizuka/Diagrams/blob/main/istioAuth0/Auth0.drawio.png">
 <br>
 
-# 8. How to work
+# 8. How to work (This is wrong, so I am rewrite it soon)
 > https://note.minna-no-ginko.com/n/n9e752ad2ab4c <br>
 > https://programmaticponderings.com/2019/01/06/securing-kubernetes-withistio-end-user-authentication-using-json-web-tokens-jwt/
 

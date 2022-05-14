@@ -162,6 +162,9 @@ Let's access!<br>
 
 <img src="https://github.com/developer-onizuka/istioAuth0/blob/main/istioAuth0_2.png" width="480">
 
+The identifier is used to identify which service the Istio IngressGateway takes API caller to. The Istio IngressGateway might host 3 or more services for API callers. API publisher(means you) should manage the JWT indivisually for each service.<br><br><br>
+<img src="https://github.com/developer-onizuka/Diagrams/blob/main/istioAuth0/Auth0.drawio.png">
+<br>
 
 # 8. How to work
 > https://note.minna-no-ginko.com/n/n9e752ad2ab4c <br>
